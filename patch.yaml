@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: airflow
+spec:
+  template:
+    spec:
+      containers:
+      - name: webserver
+        image: apache/airflow:master
+      - name: scheduler
+        image: apache/airflow:master

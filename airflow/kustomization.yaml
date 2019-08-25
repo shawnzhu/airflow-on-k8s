@@ -1,0 +1,5 @@
+resources:
+- secrets.yaml
+- volumes.yaml
+- airflow.template.yaml
+- configmaps.template.yaml

@@ -1,0 +1,9 @@
+commonLabels:
+  app: k8s-airflow
+
+resources:
+- postgres.yaml
+- airflow
+
+patchesStrategicMerge:
+- patch.yaml
