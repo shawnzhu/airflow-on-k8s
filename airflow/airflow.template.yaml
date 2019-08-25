@@ -43,13 +43,13 @@ spec:
     spec:
       initContainers:
       - name: "init"
-        image: {{AIRFLOW_IMAGE}}:{{AIRFLOW_TAG}}
+        image: apache/airflow:master
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: airflow-configmap
           mountPath: /root/airflow/airflow.cfg
           subPath: airflow.cfg
-        - name: {{INIT_DAGS_VOLUME_NAME}}
+        - name: airflow-dags
           mountPath: /root/airflow/dags
         - name: test-volume
           mountPath: /root/test_volume
@@ -64,10 +64,9 @@ spec:
         args:
           - "-cx"
           - "./tmp/airflow-test-env-init.sh"
-{{INIT_GIT_SYNC}}
       containers:
       - name: webserver
-        image: {{AIRFLOW_IMAGE}}:{{AIRFLOW_TAG}}
+        image: apache/airflow:master
         imagePullPolicy: IfNotPresent
         ports:
         - name: webserver
@@ -87,12 +86,12 @@ spec:
         - name: airflow-configmap
           mountPath: /root/airflow/airflow.cfg
           subPath: airflow.cfg
-        - name: {{POD_AIRFLOW_DAGS_VOLUME_NAME}}
+        - name: airflow-dags
           mountPath: /root/airflow/dags
         - name: airflow-logs
           mountPath: /root/airflow/logs
       - name: scheduler
-        image: {{AIRFLOW_IMAGE}}:{{AIRFLOW_TAG}}
+        image: apache/airflow:master
         imagePullPolicy: IfNotPresent
         args: ["scheduler"]
         env:
@@ -109,7 +108,7 @@ spec:
         - name: airflow-configmap
           mountPath: /root/airflow/airflow.cfg
           subPath: airflow.cfg
-        - name: {{POD_AIRFLOW_DAGS_VOLUME_NAME}}
+        - name: airflow-dags
           mountPath: /root/airflow/dags
         - name: airflow-logs
           mountPath: /root/airflow/logs
@@ -136,9 +135,9 @@ kind: Service
 metadata:
   name: airflow
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-    - port: 8080
-      nodePort: 30809
+  - port: 8080
+    targetPort: 8080
   selector:
     name: airflow
