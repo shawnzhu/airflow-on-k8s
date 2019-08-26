@@ -4,6 +4,3 @@ commonLabels:
 resources:
 - postgres.yaml
 - airflow
-
-patchesStrategicMerge:
-- patch.yaml

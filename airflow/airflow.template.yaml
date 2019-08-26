@@ -47,12 +47,12 @@ spec:
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: airflow-configmap
-          mountPath: /root/airflow/airflow.cfg
+          mountPath: /home/airflow/airflow/airflow.cfg
           subPath: airflow.cfg
         - name: airflow-dags
-          mountPath: /root/airflow/dags
+          mountPath: /home/airflow/airflow/dags
         - name: test-volume
-          mountPath: /root/test_volume
+          mountPath: /home/airflow/test_volume
         env:
         - name: SQL_ALCHEMY_CONN
           valueFrom:
@@ -83,12 +83,12 @@ spec:
               key: sql_alchemy_conn
         volumeMounts:
         - name: airflow-configmap
-          mountPath: /root/airflow/airflow.cfg
+          mountPath: /home/airflow/airflow/airflow.cfg
           subPath: airflow.cfg
         - name: airflow-dags
-          mountPath: /root/airflow/dags
+          mountPath: /home/airflow/airflow/dags
         - name: airflow-logs
-          mountPath: /root/airflow/logs
+          mountPath: /home/airflow/airflow/logs
       - name: scheduler
         image: apache/airflow:master
         imagePullPolicy: IfNotPresent
@@ -105,12 +105,12 @@ spec:
               key: sql_alchemy_conn
         volumeMounts:
         - name: airflow-configmap
-          mountPath: /root/airflow/airflow.cfg
+          mountPath: /home/airflow/airflow/airflow.cfg
           subPath: airflow.cfg
         - name: airflow-dags
-          mountPath: /root/airflow/dags
+          mountPath: /home/airflow/airflow/dags
         - name: airflow-logs
-          mountPath: /root/airflow/logs
+          mountPath: /home/airflow/airflow/logs
       volumes:
       - name: airflow-dags
         persistentVolumeClaim:

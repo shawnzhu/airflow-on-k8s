@@ -3,3 +3,6 @@ resources:
 - volumes.yaml
 - airflow.template.yaml
 - configmaps.template.yaml
+
+patchesStrategicMerge:
+- patch.yaml
