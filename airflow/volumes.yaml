@@ -14,18 +14,18 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
----
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: airflow-dags
-spec:
-  accessModes:
-    - ReadOnlyMany
-  capacity:
-    storage: 2Gi
-  hostPath:
-    path: /airflow-dags/
+#---
+#kind: PersistentVolume
+#apiVersion: v1
+#metadata:
+#  name: airflow-dags
+#spec:
+#  accessModes:
+#    - ReadOnlyMany
+#  capacity:
+#    storage: 2Gi
+#  hostPath:
+#    path: /airflow-dags/
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -37,18 +37,18 @@ spec:
   resources:
     requests:
       storage: 2Gi
----
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: airflow-logs
-spec:
-  accessModes:
-    - ReadOnlyMany
-  capacity:
-    storage: 2Gi
-  hostPath:
-    path: /airflow-logs/
+#---
+#kind: PersistentVolume
+#apiVersion: v1
+#metadata:
+#  name: airflow-logs
+#spec:
+#  accessModes:
+#    - ReadOnlyMany
+#  capacity:
+#    storage: 2Gi
+#  hostPath:
+#    path: /airflow-logs/
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -61,18 +61,18 @@ spec:
     requests:
       storage: 2Gi
 ---
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: test-volume
-spec:
-  accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 2Gi
-  hostPath:
-    path: /airflow-dags/
----
+#kind: PersistentVolume
+#apiVersion: v1
+#metadata:
+#  name: test-volume
+#spec:
+#  accessModes:
+#    - ReadWriteOnce
+#  capacity:
+#    storage: 2Gi
+#  hostPath:
+#    path: /airflow-dags/
+#---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:

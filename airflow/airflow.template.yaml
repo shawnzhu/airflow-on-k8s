@@ -60,10 +60,9 @@ spec:
               name: airflow-secrets
               key: sql_alchemy_conn
         command:
-          - "bash"
+        - "airflow"
         args:
-          - "-cx"
-          - "./tmp/airflow-test-env-init.sh"
+        - "initdb"
       containers:
       - name: webserver
         image: apache/airflow:master

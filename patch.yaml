@@ -5,8 +5,6 @@ metadata:
 spec:
   template:
     spec:
-      containers:
-      - name: webserver
-        image: apache/airflow:master
-      - name: scheduler
-        image: apache/airflow:master
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
