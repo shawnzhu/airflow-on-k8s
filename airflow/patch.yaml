@@ -8,3 +8,22 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
+      imagePullSecrets:
+      - name: default-us-icr-io
+      initContainers:
+      - name: init
+        image: us.icr.io/toolbox-analytics/apache-airflow:alpha
+      containers:
+      - name: webserver
+        image: us.icr.io/toolbox-analytics/apache-airflow:alpha
+      - name: scheduler
+        image: us.icr.io/toolbox-analytics/apache-airflow:alpha
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-rbac
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: k8s-airflow
