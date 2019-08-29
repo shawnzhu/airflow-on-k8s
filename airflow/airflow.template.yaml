@@ -49,10 +49,10 @@ spec:
         - name: airflow-configmap
           mountPath: /home/airflow/airflow/airflow.cfg
           subPath: airflow.cfg
-        - name: airflow-dags
-          mountPath: /home/airflow/airflow/dags
-        - name: test-volume
-          mountPath: /home/airflow/test_volume
+#        - name: airflow-dags
+#          mountPath: /home/airflow/airflow/dags
+#        - name: test-volume
+#          mountPath: /home/airflow/test_volume
         env:
         - name: SQL_ALCHEMY_CONN
           valueFrom:
@@ -85,10 +85,10 @@ spec:
         - name: airflow-configmap
           mountPath: /home/airflow/airflow/airflow.cfg
           subPath: airflow.cfg
-        - name: airflow-dags
-          mountPath: /home/airflow/airflow/dags
-        - name: airflow-logs
-          mountPath: /home/airflow/airflow/logs
+#        - name: airflow-dags
+#          mountPath: /home/airflow/airflow/dags
+#        - name: airflow-logs
+#          mountPath: /home/airflow/airflow/logs
       - name: scheduler
         image: apache/airflow:master
         imagePullPolicy: IfNotPresent
@@ -107,24 +107,24 @@ spec:
         - name: airflow-configmap
           mountPath: /home/airflow/airflow/airflow.cfg
           subPath: airflow.cfg
-        - name: airflow-dags
-          mountPath: /home/airflow/airflow/dags
-        - name: airflow-logs
-          mountPath: /home/airflow/airflow/logs
+#        - name: airflow-dags
+#          mountPath: /home/airflow/airflow/dags
+#        - name: airflow-logs
+#          mountPath: /home/airflow/airflow/logs
       volumes:
-      - name: airflow-dags
-        persistentVolumeClaim:
-          claimName: airflow-dags
-      - name: airflow-dags-fake
-        emptyDir: {}
-      - name: airflow-dags-git
-        emptyDir: {}
-      - name: test-volume
-        persistentVolumeClaim:
-          claimName: test-volume
-      - name: airflow-logs
-        persistentVolumeClaim:
-          claimName: airflow-logs
+#      - name: airflow-dags
+#        persistentVolumeClaim:
+#          claimName: airflow-dags
+#      - name: airflow-dags-fake
+#        emptyDir: {}
+#      - name: airflow-dags-git
+#        emptyDir: {}
+#      - name: test-volume
+#        persistentVolumeClaim:
+#          claimName: test-volume
+#      - name: airflow-logs
+#        persistentVolumeClaim:
+#          claimName: airflow-logs
       - name: airflow-configmap
         configMap:
           name: airflow-configmap
