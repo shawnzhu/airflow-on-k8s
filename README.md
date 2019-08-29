@@ -5,7 +5,7 @@ This project is built on top of [Apache Airflow on Kubernetes](https://github.co
 * [x] k8s executor
 * [ ] operatior UX
     * [ ] uses [kustomize](https://kustomize.io)
-    * [ ] improves log aggregation
+    * [ ] improves log aggregation - to avoid all pods try to write to a single pvc `airflow-logs`
 * security enhancements
     * [x] picks official airflow container image - [`apache/airflow`](https://hub.docker.com/r/apache/airflow)
     * [ ] k8s RBAC
