@@ -2,7 +2,10 @@ resources:
 - secrets.yaml
 #- volumes.yaml
 - airflow.template.yaml
-- configmaps.template.yaml
+configMapGenerator:
+- name: airflow-configmap
+  files:
+  - airflow.cfg
 
 patchesStrategicMerge:
 - patch.yaml
