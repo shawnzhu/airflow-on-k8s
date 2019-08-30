@@ -1,7 +1,9 @@
 resources:
+- ../base
+- postgres.yaml
 - secrets.yaml
-#- volumes.yaml
-- airflow.template.yaml
+- volumes.yaml
+
 configMapGenerator:
 - name: airflow-configmap
   files:
@@ -9,3 +11,5 @@ configMapGenerator:
 
 patchesStrategicMerge:
 - patch.yaml
+
+namePrefix: dev-

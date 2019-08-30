@@ -1,0 +1,15 @@
+commonLabels:
+  app: k8s-airflow
+
+resources:
+- ../base
+
+configMapGenerator:
+- name: airflow-configmap
+  files:
+  - airflow.cfg
+
+patchesStrategicMerge:
+- patch.yaml
+
+namePrefix: prod-
