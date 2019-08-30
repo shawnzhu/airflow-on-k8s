@@ -8,13 +8,3 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
-
----
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: admin-rbac
-subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: k8s-airflow
