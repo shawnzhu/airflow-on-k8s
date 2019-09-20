@@ -1,3 +1,3 @@
 resources:
-#- volumes.yaml
+- rbac.yaml
 - airflow.template.yaml
