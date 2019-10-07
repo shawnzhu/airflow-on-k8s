@@ -1,8 +1,8 @@
 resources:
 - ../base
 - postgres.yaml
+- minio-server.yaml
 - secrets.yaml
-- volumes.yaml
 
 configMapGenerator:
 - name: airflow-configmap
