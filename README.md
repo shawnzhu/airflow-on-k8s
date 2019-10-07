@@ -27,16 +27,16 @@ $ kustomize build dev/
 
 It uses kustomize overlays to separate dev/prod configuration.
 
+* base
+    * has its own service account and role.
+    * does not depend on `default` namespace.
+
 * development
-    * in `default` namespace
-    * service account is binding to clusteradmin
-    * dags not in image
-    * keeps logs in a pvc
+    * dags in image
+    * uses local minio server as remote logging
     * uses local postgres db
 
 * production
-    * in a given namespace
-    * has its own service account and role.
     * dags in custom build image
     * remote logging
     * remote db

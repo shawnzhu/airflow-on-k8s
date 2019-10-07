@@ -26,8 +26,11 @@ spec:
       labels:
         name: airflow
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
       initContainers:
-      - name: "init"
+      - name: init
         image: apache/airflow:master
         imagePullPolicy: IfNotPresent
         volumeMounts:
@@ -45,9 +48,10 @@ spec:
               name: airflow-secrets
               key: sql_alchemy_conn
         command:
-        - "airflow"
+        - airflow
         args:
-        - "initdb"
+        - db
+        - init
       serviceAccountName: airflow
       containers:
       - name: webserver
