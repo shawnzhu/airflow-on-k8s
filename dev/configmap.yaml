@@ -22,7 +22,7 @@ data:
     # under the License.
 
     [core]
-    dags_folder = /home/airflow/airflow/dags
+    dags_folder = /opt/airflow/dags
     base_log_folder = /home/airflow/airflow/logs
     logging_level = INFO
     executor = KubernetesExecutor
