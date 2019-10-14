@@ -3,6 +3,10 @@ resources:
 - postgres.yaml
 - volumes.yaml
 
+images:
+- name: apache/airflow
+  newTag: master-python3.7-ci-slim
+
 configMapGenerator:
 - name: airflow-configmap
   files:
