@@ -1,13 +1,18 @@
 resources:
 - ../base
 - postgres.yaml
-- secrets.yaml
 - volumes.yaml
 
 configMapGenerator:
 - name: airflow-configmap
   files:
   - airflow.cfg
+
+secretGenerator:
+- name: airflow-secrets
+  envs:
+  - dev.env
+  type: Opaque
 
 patchesStrategicMerge:
 - patch.yaml
