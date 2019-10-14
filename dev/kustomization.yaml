@@ -2,15 +2,11 @@ resources:
 - ../base
 - postgres.yaml
 - volumes.yaml
+- configmap.yaml
 
 images:
 - name: apache/airflow
   newTag: master-python3.7-ci-slim
-
-configMapGenerator:
-- name: airflow-configmap
-  files:
-  - airflow.cfg
 
 secretGenerator:
 - name: airflow-secrets
